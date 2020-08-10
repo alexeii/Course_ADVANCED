@@ -1,14 +1,30 @@
-let num = 266219;
-num = num.toString().split("");
+"use strict";
+let lang = prompt('Введите язык: "ru" или "en"', "ru");
 
-let result = 1;
-for (let i = 0; i < num.length; i++) {
-  result *= +num[i];
+if (lang === "ru") {
+  console.log("ПН, ВТ, СР, ЧТ, ПТ, СБ, ВС");
+} else if (lang === "en") {
+  console.log("MO, TU, WE, TH, FR, SA, SU");
 }
-console.log("умножение цифр = " + result);
-result **= 3; //Возведение в степень 3
+switch (lang) {
+  case "ru":
+    console.log("ПН, ВТ, СР, ЧТ, ПТ, СБ, ВС");
+    break;
+  case "en":
+    console.log("ПН, ВТ, СР, ЧТ, ПТ, СБ, ВС");
+    break;
+}
 
-console.log(
-  "Первые две цифры при возведении числа '1296' в степень 3 =  " +
-    +result.toString().substring(0, 2)
-);
+let days = {
+  ru: ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"],
+  en: ["MO", "TU", "WE", "TH", "FR", "SA", "SU"],
+};
+console.log(days[lang]);
+
+let namePerson = prompt("Введите имя", "Артем");
+
+namePerson === "Артем"
+  ? console.log("директор")
+  : namePerson === "Максим"
+  ? console.log("преподаватель")
+  : console.log("студент");
