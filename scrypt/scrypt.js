@@ -1,30 +1,17 @@
 "use strict";
-let lang = prompt('Введите язык: "ru" или "en"', "ru");
+let str = prompt('Введите строку', 'Сегодня хорошая погода, но скоро осень');
 
-if (lang === "ru") {
-  console.log("ПН, ВТ, СР, ЧТ, ПТ, СБ, ВС");
-} else if (lang === "en") {
-  console.log("MO, TU, WE, TH, FR, SA, SU");
-}
-switch (lang) {
-  case "ru":
-    console.log("ПН, ВТ, СР, ЧТ, ПТ, СБ, ВС");
-    break;
-  case "en":
-    console.log("ПН, ВТ, СР, ЧТ, ПТ, СБ, ВС");
-    break;
-}
 
-let days = {
-  ru: ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"],
-  en: ["MO", "TU", "WE", "TH", "FR", "SA", "SU"],
+function strTrim(s) {
+  if (typeof s === 'string') {
+    if (s.length > 30) {
+      console.log(s.trim().substr(0, 30) + '...');
+    } else {
+      console.log(s.trim());
+    }
+  } else {
+    alert('Вы ввели не строку');
+  }
+
 };
-console.log(days[lang]);
-
-let namePerson = prompt("Введите имя", "Артем");
-
-namePerson === "Артем"
-  ? console.log("директор")
-  : namePerson === "Максим"
-  ? console.log("преподаватель")
-  : console.log("студент");
+strTrim(str);
