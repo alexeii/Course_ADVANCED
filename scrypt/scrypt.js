@@ -1,26 +1,26 @@
 "use strict";
-//1 задача
-let arr = [
-  "255687",
-  "152845",
-  "4584785",
-  "1234567",
-  "2456984",
-  "1597536",
-  "4789654",
-];
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i][0] === "2" || arr[i][0] === "4") console.log(arr[i]);
-}
 
-//2 задача
-for (let i = 2; i < 100; i++) {
-  let count = 0;
-  for (let j = 1; j <= i; j++) {
-    if (i % j) {
-      continue;
+let week = [
+  "Понедельник",
+  "Вторник",
+  "Среда",
+  "Четверг",
+  "Пятница",
+  "Суббота",
+  "Воскресенье",
+];
+let now = new Date().getDay() - 1;
+
+for (let i = 0; i < week.length; i++) {
+  if (i === now) {
+    if (week[i] === "Суббота" || week[i] === "Воскресенье") {
+      document.write(`<p><b><i>${week[i]}</i></b></p>`);
+    } else {
+      document.write(`<p><b>${week[i]}</b></p>`);
     }
-    count += 1;
+  } else if (week[i] === "Суббота" || week[i] === "Воскресенье") {
+    document.write(`<p><i>${week[i]}</i></p>`);
+  } else {
+    document.write(`<p>${week[i]}</p>`);
   }
-  if (count === 2) console.log(i + " :Делители этого числа: 1 и " + i);
 }
