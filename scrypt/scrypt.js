@@ -114,7 +114,7 @@ function optionB() {
     document.querySelector(".b-dat").innerHTML = bDat;
   }
   //месяц
-  let bMonth = date.getMonth();
+  let bMonth = date.getMonth() + 1;
   if (bMonth < 10) {
     document.querySelector(".b-month").innerHTML = "0" + bMonth;
   } else {
