@@ -1,5 +1,7 @@
 "use strict";
-
+const getDay = document.querySelector(".get-day");
+const getAm = document.querySelector('.get-am');
+const getNewYear = document.querySelector('.get-new-year');
 let week = [
   "Воскресенье",
   "Понедельник",
@@ -10,142 +12,73 @@ let week = [
   "Суббота",
 ];
 
-let month = [
-  "Января",
-  "Февраля",
-  "Марта",
-  "Апреля",
-  "Мая",
-  "Июня",
-  "Июля",
-  "Августа",
-  "Сентября",
-  "Октября",
-  "Ноября",
-  "Декабря",
-];
-
 function optionA() {
   let date = new Date();
-  //день недели
+  //1 пункт
+  let aHours = date.getHours();
+  if (aHours > 0 && aHours <= 6) {
+    getDay.textContent = "Доброй ночи!"
+  } else if (aHours > 6 && aHours <= 12) {
+    getDay.textContent = "Доброе утро!"
+  } else if (aHours > 12 && aHours <= 18) {
+    getDay.textContent = "Добрый день!"
+  } else if (aHours > 18 && aHours <= 0) {
+    getDay.textContent = "Добрый вечер!"
+  };
+  //2 пункт
   let aDay = document.querySelector(".a-day");
   let aDay1 = date.getDay();
   for (let i = 0; i < week.length; i++) {
-    if (i === aDay1) aDay.innerHTML = week[i];
+    if (i === aDay1) aDay.textContent = week[i];
   }
-  //число
-  let aDat = date.getDate();
-  document.querySelector(".a-dat").innerHTML = aDat;
-  //месяц
-  let aMonth = document.querySelector(".a-month");
-  let aMonth1 = date.getMonth();
-  for (let i = 0; i < month.length; i++) {
-    if (i === aMonth1) aMonth.innerHTML = month[i];
-  }
-  //год
-  let aYear = date.getFullYear();
-  document.querySelector(".a-year").innerHTML = aYear;
+  //3 пункт
   //час
-  let aHours = date.getHours();
-  if (aHours === 1 || aHours === 21) {
-    document.querySelector(".a-hour").innerHTML = aHours + " час ";
-  } else if (
-    aHours === 2 ||
-    aHours === 3 ||
-    aHours === 4 ||
-    aHours === 22 ||
-    aHours === 23
-  ) {
-    document.querySelector(".a-hour").innerHTML = aHours + " часа ";
-  } else {
-    document.querySelector(".a-hour").innerHTML = aHours + " часов ";
-  }
-  //минуты
-  let aMinuts = date.getMinutes();
-  if (
-    aMinuts === 1 ||
-    aMinuts === 21 ||
-    aMinuts === 31 ||
-    aMinuts === 41 ||
-    aMinuts === 51
-  ) {
-    document.querySelector(".a-minuts").innerHTML = aMinuts + " минута ";
-  } else if (
-    (2 <= aMinuts && aMinuts <= 4) ||
-    (22 <= aMinuts && aMinuts <= 24) ||
-    (32 <= aMinuts && aMinuts <= 34) ||
-    (42 <= aMinuts && aMinuts <= 44) ||
-    (52 <= aMinuts && aMinuts <= 54)
-  ) {
-    document.querySelector(".a-minuts").innerHTML = aMinuts + " минуты ";
-  } else {
-    document.querySelector(".a-minuts").innerHTML = aMinuts + " минут ";
-  }
-  //секунды
-  let aSecond = date.getSeconds();
-  if (
-    aSecond === 1 ||
-    aSecond === 21 ||
-    aSecond === 31 ||
-    aSecond === 41 ||
-    aSecond === 51
-  ) {
-    document.querySelector(".a-seconds").innerHTML = aSecond + " секунда ";
-  } else if (
-    (2 <= aSecond && aSecond <= 4) ||
-    (22 <= aSecond && aSecond <= 24) ||
-    (32 <= aSecond && aSecond <= 34) ||
-    (42 <= aSecond && aSecond <= 44) ||
-    (52 <= aSecond && aSecond <= 54)
-  ) {
-    document.querySelector(".a-seconds").innerHTML = aSecond + " секунды ";
-  } else {
-    document.querySelector(".a-seconds").innerHTML = aSecond + " секунд ";
-  }
-}
-
-function optionB() {
-  let date = new Date();
-  //день
-  let bDat = date.getDate();
-  if (bDat < 10) {
-    document.querySelector(".b-dat").innerHTML = "0" + bDat;
-  } else {
-    document.querySelector(".b-dat").innerHTML = bDat;
-  }
-  //месяц
-  let bMonth = date.getMonth() + 1;
-  if (bMonth < 10) {
-    document.querySelector(".b-month").innerHTML = "0" + bMonth;
-  } else {
-    document.querySelector(".b-month").innerHTML = bMonth;
-  }
-  //год
-  let bYear = date.getFullYear();
-  document.querySelector(".b-year").innerHTML = bYear;
-  //час
-  let bHour = date.getHours();
+  let bHour = date.getHours() % 12 || 12;;
   if (bHour < 10) {
-    document.querySelector(".b-hour").innerHTML = "0" + bHourh;
+    document.querySelector(".b-hour").textContent = "0" + bHour;
   } else {
-    document.querySelector(".b-hour").innerHTML = bHour;
+    document.querySelector(".b-hour").textContent = bHour;
   }
   //минуты
   let bMinut = date.getMinutes();
   if (bMinut < 10) {
-    document.querySelector(".b-minuts").innerHTML = "0" + bMinut;
+    document.querySelector(".b-minuts").textContent = "0" + bMinut;
   } else {
-    document.querySelector(".b-minuts").innerHTML = bMinut;
+    document.querySelector(".b-minuts").textContent = bMinut;
   }
   //секунды
   let bSecond = date.getSeconds();
   if (bSecond < 10) {
-    document.querySelector(".b-seconds").innerHTML = "0" + bSecond;
+    document.querySelector(".b-seconds").textContent = "0" + bSecond;
   } else {
-    document.querySelector(".b-seconds").innerHTML = bSecond;
+    document.querySelector(".b-seconds").textContent = bSecond;
   }
-}
+  if (0 <= aHours && aHours < 12) {
+    getAm.textContent = 'AM';
+  } else if (12 <= aHours && aHours < 23) {
+    getAm.textContent = 'PM';
+  }
+  let dateStop = new Date("01 January 2021").getTime();
+  let dateNow = new Date().getTime();
+  let timeRem = (dateStop - dateNow) / 1000;
+  let dayNY = Math.floor(timeRem / 60 / 60 / 24);
+  let dayname = "";
+  let dayLost = '';
+  let dd = dayNY.toString().split('');
+  let dz = dd[dd.length - 1];
+  if (dz == 1) {
+    dayLost = 'остался';
+    dayname = " день"
+  } else if (dz == 2 || dz == 3 || dz == 4) {
+    dayname = " дня";
+    dayLost = 'осталось';
+  } else {
+    dayname = " дней";
+    dayLost = 'осталось';
+  };
 
-setInterval(() => optionA(), 1000); //вызов варианта а
+  getNewYear.textContent = dayLost + ' ' + dayNY + ' ' + dayname;
+};
 
-setInterval(() => optionB(), 1000); //вызов варианта б
+
+setInterval(() => optionA(), 1000);
